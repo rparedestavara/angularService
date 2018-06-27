@@ -1,0 +1,20 @@
+<style>
+  .completar{
+    background: red;
+  };
+
+</style>
+  
+  
+  <form [formGroup]='registroForm' method="POST" (ngSubmit)="registro()">
+    <li>Nombre: <input type="text" formControlName='nom'></li>
+    <p *ngIf="registroForm.get('nom').errors && registroForm.get('nom').dirty">Completar</p>
+    <li>Usuario: <input type="text" formControlName="us" ></li>
+    <p *ngIf="registroForm.get('us').errors && registroForm.get('us').dirty">Completar</p>
+    <li>Mail: <input type="email" formControlName="email" [ngClass]="{completar:registroForm.get('email').errors && registroForm.get('email').dirty}" ></li>
+    <p *ngIf="registroForm.get('email').errors && registroForm.get('email').dirty">Completar</p>
+    <li>Passward: <input type="password" formControlName="pass" ></li>
+    <p *ngIf="registroForm.get('pass').errors && registroForm.get('pass').dirty">Completar</p>
+    <li><input type="submit" value="Enviar" [disabled]="registroForm.invalid"></li>
+  </form>
+
